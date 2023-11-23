@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, ViewChild, ElementRef, NgModule } from "@angular/core";
+import { Component, ViewChild, ElementRef, Input } from "@angular/core";
 import { ProgressComponent } from "./progress/progress.component";
 import { DndDirective } from "./dnd.directive";
 
@@ -16,6 +16,10 @@ import { DndDirective } from "./dnd.directive";
 export class FjalibUploadComponent {
   @ViewChild("fileDropRef", { static: false }) fileDropEl: ElementRef = new ElementRef({});
   files: any[] = [];
+
+  @Input() DragMessage: string = "Drag and drop file here"; 
+  @Input() OrDragMessage: string = "or";
+  @Input() LabelButtonUpload: string = "Browse for file";
 
   /**
    * on file drop handler
