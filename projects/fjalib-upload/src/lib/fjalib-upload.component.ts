@@ -1,14 +1,18 @@
 import { CommonModule } from "@angular/common";
-import { Component, ViewChild, ElementRef } from "@angular/core";
+import { Component, ViewChild, ElementRef, NgModule } from "@angular/core";
 import { ProgressComponent } from "./progress/progress.component";
+import { DndDirective } from "./dnd.directive";
 
 @Component({
     selector: "lib-fjalib-upload",
     templateUrl: "./fjalib-upload.component.html",
     styleUrls: ["./fjalib-upload.component.scss"],
     standalone: true,
-    imports: [CommonModule, ProgressComponent]
+    imports: [CommonModule, ProgressComponent, DndDirective]
 })
+
+
+
 export class FjalibUploadComponent {
   @ViewChild("fileDropRef", { static: false }) fileDropEl: ElementRef = new ElementRef({});
   files: any[] = [];
