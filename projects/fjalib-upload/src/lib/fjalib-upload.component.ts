@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, ViewChild, ElementRef, Input } from "@angular/core";
+import { Component, ViewChild, ElementRef, Input, Output, EventEmitter } from "@angular/core";
 import { ProgressComponent } from "./progress/progress.component";
 import { DndDirective } from "./dnd.directive";
 
@@ -20,6 +20,8 @@ export class FjalibUploadComponent {
   @Input() DragMessage: string = "Drag and drop file here"; 
   @Input() OrDragMessage: string = "or";
   @Input() LabelButtonUpload: string = "Browse for file";
+  @Output() filesChange = new EventEmitter();
+
 
   /**
    * on file drop handler
@@ -75,8 +77,10 @@ export class FjalibUploadComponent {
     for (const item of files) {
       item.progress = 0;
       this.files.push(item);
+      this.filesChange.emit(item);
     }
     this.fileDropEl.nativeElement.value = "";
+    //TODO: DISPARAR EVENTO
     this.uploadFilesSimulator(0);
   }
 
