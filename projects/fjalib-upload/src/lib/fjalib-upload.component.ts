@@ -20,6 +20,7 @@ export class FjalibUploadComponent {
   @Input() DragMessage: string = "Drag and drop file here"; 
   @Input() OrDragMessage: string = "or";
   @Input() LabelButtonUpload: string = "Browse for file";
+  @Input() MultipleFiles: boolean = false;
   @Output() filesChange = new EventEmitter();
 
 
@@ -75,6 +76,11 @@ export class FjalibUploadComponent {
    */
   prepareFilesList(files: Array<any>) {
     for (const item of files) {
+      if(this.MultipleFiles == false) {
+        for (let index = this.files.length; index > 0 ; index--) {
+          this.deleteFile(index);         
+        }
+      }
       item.progress = 0;
       this.files.push(item);
       this.filesChange.emit(item);
