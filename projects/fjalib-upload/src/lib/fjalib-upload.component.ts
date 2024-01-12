@@ -21,6 +21,7 @@ export class FjalibUploadComponent {
   @Input() OrDragMessage: string = "or";
   @Input() LabelButtonUpload: string = "Browse for file";
   @Input() MultipleFiles: boolean = false;
+  @Input() AcceptTypes: string = "";
   @Output() filesChange = new EventEmitter();
 
 
